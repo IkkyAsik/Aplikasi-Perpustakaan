@@ -9,6 +9,10 @@
         android:icon="@drawable/ic_search"
         android:title="@string/nav_search" />
     <item
+        android:id="@+id/nav_favorites"
+        android:icon="@drawable/ic_favorite"
+        android:title="Favorit" />
+    <item
         android:id="@+id/nav_my_books"
         android:icon="@drawable/ic_my_books"
         android:title="@string/nav_my_books" />

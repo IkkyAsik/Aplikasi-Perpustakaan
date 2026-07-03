@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -29,6 +30,9 @@ public final class FragmentProfileBinding implements ViewBinding {
 
   @NonNull
   public final Button btnLogout;
+
+  @NonNull
+  public final SwitchCompat switchDarkMode;
 
   @NonNull
   public final TextView tvActiveBorrowed;
@@ -53,14 +57,15 @@ public final class FragmentProfileBinding implements ViewBinding {
 
   private FragmentProfileBinding(@NonNull LinearLayout rootView, @NonNull CardView btnAbout,
       @NonNull Button btnAdminManageBooks, @NonNull Button btnLogout,
-      @NonNull TextView tvActiveBorrowed, @NonNull TextView tvAvatar,
-      @NonNull TextView tvMemberSince, @NonNull TextView tvProfileEmail,
+      @NonNull SwitchCompat switchDarkMode, @NonNull TextView tvActiveBorrowed,
+      @NonNull TextView tvAvatar, @NonNull TextView tvMemberSince, @NonNull TextView tvProfileEmail,
       @NonNull TextView tvProfileName, @NonNull TextView tvProfilePhone,
       @NonNull TextView tvTotalBorrowed) {
     this.rootView = rootView;
     this.btnAbout = btnAbout;
     this.btnAdminManageBooks = btnAdminManageBooks;
     this.btnLogout = btnLogout;
+    this.switchDarkMode = switchDarkMode;
     this.tvActiveBorrowed = tvActiveBorrowed;
     this.tvAvatar = tvAvatar;
     this.tvMemberSince = tvMemberSince;
@@ -115,6 +120,12 @@ public final class FragmentProfileBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.switchDarkMode;
+      SwitchCompat switchDarkMode = ViewBindings.findChildViewById(rootView, id);
+      if (switchDarkMode == null) {
+        break missingId;
+      }
+
       id = R.id.tvActiveBorrowed;
       TextView tvActiveBorrowed = ViewBindings.findChildViewById(rootView, id);
       if (tvActiveBorrowed == null) {
@@ -158,8 +169,8 @@ public final class FragmentProfileBinding implements ViewBinding {
       }
 
       return new FragmentProfileBinding((LinearLayout) rootView, btnAbout, btnAdminManageBooks,
-          btnLogout, tvActiveBorrowed, tvAvatar, tvMemberSince, tvProfileEmail, tvProfileName,
-          tvProfilePhone, tvTotalBorrowed);
+          btnLogout, switchDarkMode, tvActiveBorrowed, tvAvatar, tvMemberSince, tvProfileEmail,
+          tvProfileName, tvProfilePhone, tvTotalBorrowed);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

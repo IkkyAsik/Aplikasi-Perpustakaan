@@ -1,0 +1,4 @@
+com.example.perpustakaan.test.app-androidTest-0 C:\Users\mrifq\.gemini\antigravity\scratch\PerpustakaanApp\app\build\generated\res\resValues\androidTest\debug
+com.example.perpustakaan.test.app-mergeDebugAndroidTestResources-1 C:\Users\mrifq\.gemini\antigravity\scratch\PerpustakaanApp\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.perpustakaan.test.app-mergeDebugAndroidTestResources-2 C:\Users\mrifq\.gemini\antigravity\scratch\PerpustakaanApp\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.perpustakaan.test.app-merged_res-3 C:\Users\mrifq\.gemini\antigravity\scratch\PerpustakaanApp\app\build\intermediates\merged_res\debugAndroidTest

@@ -7,7 +7,9 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.example.perpustakaan.model.Book
 import com.example.perpustakaan.model.Borrowing
+import com.example.perpustakaan.model.Review
 import com.example.perpustakaan.model.User
+import com.example.perpustakaan.model.MemberBorrowInfo
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -17,7 +19,7 @@ class DatabaseHelper(context: Context) :
 
     companion object {
         const val DATABASE_NAME = "perpustakaan.db"
-        const val DATABASE_VERSION = 2
+        const val DATABASE_VERSION = 4
 
         const val TABLE_USERS = "users"
         const val COL_USER_ID = "id"
@@ -47,7 +49,22 @@ class DatabaseHelper(context: Context) :
         const val COL_BORROW_DATE = "borrow_date"
         const val COL_BORROW_RETURN_DATE = "return_date"
         const val COL_BORROW_STATUS = "status"
+        const val COL_BORROW_DUE_DATE = "due_date"
+        const val COL_BORROW_NOTIFIED = "notified"
         const val COL_BORROW_ACTUAL_RETURN_DATE = "actual_return_date"
+
+        const val TABLE_FAVORITES = "favorites"
+        const val COL_FAV_ID = "id"
+        const val COL_FAV_USER_ID = "user_id"
+        const val COL_FAV_BOOK_ID = "book_id"
+
+        const val TABLE_REVIEWS = "reviews"
+        const val COL_REVIEW_ID = "id"
+        const val COL_REVIEW_USER_ID = "user_id"
+        const val COL_REVIEW_BOOK_ID = "book_id"
+        const val COL_REVIEW_RATING = "rating"
+        const val COL_REVIEW_COMMENT = "comment"
+        const val COL_REVIEW_DATE = "review_date"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -83,22 +100,55 @@ class DatabaseHelper(context: Context) :
             "$COL_BORROW_BOOK_ID INTEGER NOT NULL, " +
             "$COL_BORROW_DATE TEXT, " +
             "$COL_BORROW_RETURN_DATE TEXT, " +
+            "$COL_BORROW_DUE_DATE TEXT, " +
             "$COL_BORROW_STATUS TEXT DEFAULT 'borrowed', " +
-            "$COL_BORROW_ACTUAL_RETURN_DATE TEXT)"
+            "$COL_BORROW_ACTUAL_RETURN_DATE TEXT, " +
+            "$COL_BORROW_NOTIFIED INTEGER DEFAULT 0)"
         )
 
-        insertSampleData(db)
+        db.execSQL(
+            "CREATE TABLE $TABLE_FAVORITES (" +
+            "$COL_FAV_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            "$COL_FAV_USER_ID INTEGER NOT NULL, " +
+            "$COL_FAV_BOOK_ID INTEGER NOT NULL, " +
+            "UNIQUE($COL_FAV_USER_ID, $COL_FAV_BOOK_ID))"
+        )
+
+        db.execSQL(
+            "CREATE TABLE $TABLE_REVIEWS (" +
+            "$COL_REVIEW_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            "$COL_REVIEW_USER_ID INTEGER NOT NULL, " +
+            "$COL_REVIEW_BOOK_ID INTEGER NOT NULL, " +
+            "$COL_REVIEW_RATING REAL NOT NULL, " +
+            "$COL_REVIEW_COMMENT TEXT, " +
+            "$COL_REVIEW_DATE TEXT)"
+        )
+
+        insertSampleDataIfNeeded(db)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_BORROWINGS")
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_BOOKS")
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_USERS")
-        onCreate(db)
+        // Preserve existing data. Future schema migrations can be added here.
+        // Example for adding a new column:
+        // if (oldVersion < 5) {
+        //     db.execSQL("ALTER TABLE $TABLE_BOOKS ADD COLUMN new_column TEXT")
+        // }
+    }
+
+    // Insert sample data only when the books table is empty
+    private fun insertSampleDataIfNeeded(db: SQLiteDatabase) {
+        val cursor = db.rawQuery("SELECT COUNT(*) FROM $TABLE_BOOKS", null)
+        var isEmpty = true
+        if (cursor.moveToFirst()) {
+            isEmpty = cursor.getInt(0) == 0
+        }
+        cursor.close()
+        if (isEmpty) {
+            insertSampleData(db)
+        }
     }
 
     private fun insertSampleData(db: SQLiteDatabase) {
-        // Default admin
         val admin = ContentValues().apply {
             put(COL_USER_NAME, "Admin Perpustakaan")
             put(COL_USER_EMAIL, "admin@perpustakaan.com")
@@ -112,7 +162,7 @@ class DatabaseHelper(context: Context) :
             arrayOf("Bumi Manusia", "Pramoedya Ananta Toer", "Sastra",
                 "Novel sejarah tentang perjuangan Minke, seorang pribumi Jawa di era kolonial Belanda. Kisah cinta, perjuangan, dan penindasan yang luar biasa kuat.", "1980", "3", "978-979-22-9751-5", "#8E44AD", "cover_bumi_manusia"),
             arrayOf("Laskar Pelangi", "Andrea Hirata", "Novel",
-                "Kisah inspiratif tentang sepuluh anak Melayu Belitung yang berjuang mendapatkan pendidikan di sekolah Muhammadiyah yang hampir roboh. Tentang mimpi dan semangat pantang menyerah.", "2005", "4", "978-979-3062-79-9", "#E67E22", "cover_laskar_pelangi"),
+                "Kisah inspiratif tentang sepuluh anak Melayu Belitung yang berjuang mendapatkan pendidikan di sekolah Muhammadiyah yang hampir roboh.", "2005", "4", "978-979-3062-79-9", "#E67E22", "cover_laskar_pelangi"),
             arrayOf("Negeri 5 Menara", "Ahmad Fuadi", "Novel",
                 "Novel inspiratif berlatar pesantren Pondok Madani. Kisah Alif dan kelima sahabatnya dari berbagai penjuru nusantara yang memiliki cita-cita tinggi.", "2009", "3", "978-602-03-1614-9", "#2980B9", "cover_negeri_5_menara"),
             arrayOf("Dilan: Dia adalah Dilanku tahun 1990", "Pidi Baiq", "Novel",
@@ -191,6 +241,37 @@ class DatabaseHelper(context: Context) :
         return exists
     }
 
+    fun getTotalUsersCount(): Int {
+        val cursor = readableDatabase.rawQuery("SELECT COUNT(*) FROM $TABLE_USERS WHERE $COL_USER_EMAIL != 'admin@perpustakaan.com'", null)
+        val count = if (cursor.moveToFirst()) cursor.getInt(0) else 0
+        cursor.close()
+        return count
+    }
+
+    fun getAllMembersWithActiveBorrowCount(): List<MemberBorrowInfo> {
+        val list = mutableListOf<MemberBorrowInfo>()
+        val query = "SELECT u.$COL_USER_ID, u.$COL_USER_NAME, u.$COL_USER_EMAIL, u.$COL_USER_PHONE, u.$COL_USER_CREATED_AT, " +
+                    "(SELECT COUNT(*) FROM $TABLE_BORROWINGS b WHERE b.$COL_BORROW_USER_ID = u.$COL_USER_ID AND b.$COL_BORROW_STATUS = 'borrowed') AS active_count " +
+                    "FROM $TABLE_USERS u " +
+                    "WHERE u.$COL_USER_EMAIL != 'admin@perpustakaan.com' " +
+                    "ORDER BY u.$COL_USER_NAME"
+        val cursor = readableDatabase.rawQuery(query, null)
+        while (cursor.moveToNext()) {
+            list.add(
+                MemberBorrowInfo(
+                    id = cursor.getInt(0),
+                    name = cursor.getString(1),
+                    email = cursor.getString(2),
+                    phone = cursor.getString(3) ?: "",
+                    createdAt = cursor.getString(4) ?: "",
+                    activeBorrowCount = cursor.getInt(5)
+                )
+            )
+        }
+        cursor.close()
+        return list
+    }
+
     private fun cursorToUser(c: Cursor) = User(
         id = c.getInt(c.getColumnIndexOrThrow(COL_USER_ID)),
         name = c.getString(c.getColumnIndexOrThrow(COL_USER_NAME)),
@@ -240,6 +321,67 @@ class DatabaseHelper(context: Context) :
         )
         return if (cursor.moveToFirst()) cursorToBook(cursor).also { cursor.close() }
         else { cursor.close(); null }
+    }
+
+    fun getBooksFiltered(category: String, onlyAvailable: Boolean, sortBy: String): List<Book> {
+        val selection = mutableListOf<String>()
+        val selectionArgs = mutableListOf<String>()
+
+        if (category != "Semua") {
+            selection.add("$COL_BOOK_CATEGORY = ?")
+            selectionArgs.add(category)
+        }
+        if (onlyAvailable) {
+            selection.add("$COL_BOOK_AVAILABLE_COPIES > 0")
+        }
+
+        val orderBy = when (sortBy) {
+            "Z-A" -> "$COL_BOOK_TITLE DESC"
+            "Terbaru" -> "$COL_BOOK_YEAR DESC"
+            "Terlama" -> "$COL_BOOK_YEAR ASC"
+            else -> COL_BOOK_TITLE // A-Z default
+        }
+
+        val list = mutableListOf<Book>()
+        val cursor = readableDatabase.query(
+            TABLE_BOOKS, null,
+            if (selection.isEmpty()) null else selection.joinToString(" AND "),
+            if (selectionArgs.isEmpty()) null else selectionArgs.toTypedArray(),
+            null, null, orderBy
+        )
+        while (cursor.moveToNext()) list.add(cursorToBook(cursor))
+        cursor.close()
+        return list
+    }
+
+    fun getMostBorrowedBooks(limit: Int = 5): List<Pair<String, Int>> {
+        val result = mutableListOf<Pair<String, Int>>()
+        val cursor = readableDatabase.rawQuery(
+            "SELECT bk.$COL_BOOK_TITLE, COUNT(b.$COL_BORROW_ID) as borrow_count " +
+            "FROM $TABLE_BORROWINGS b JOIN $TABLE_BOOKS bk ON b.$COL_BORROW_BOOK_ID = bk.$COL_BOOK_ID " +
+            "GROUP BY b.$COL_BORROW_BOOK_ID ORDER BY borrow_count DESC LIMIT ?",
+            arrayOf(limit.toString())
+        )
+        while (cursor.moveToNext()) {
+            result.add(Pair(cursor.getString(0), cursor.getInt(1)))
+        }
+        cursor.close()
+        return result
+    }
+
+    fun getTotalBooksCount(): Int {
+        val cursor = readableDatabase.rawQuery("SELECT COUNT(*) FROM $TABLE_BOOKS", null)
+        val count = if (cursor.moveToFirst()) cursor.getInt(0) else 0
+        cursor.close()
+        return count
+    }
+
+    fun getTotalActiveBorrowingsCount(): Int {
+        val cursor = readableDatabase.rawQuery(
+            "SELECT COUNT(*) FROM $TABLE_BORROWINGS WHERE $COL_BORROW_STATUS = 'borrowed'", null)
+        val count = if (cursor.moveToFirst()) cursor.getInt(0) else 0
+        cursor.close()
+        return count
     }
 
     private fun updateAvailability(bookId: Int, copies: Int) {
@@ -293,10 +435,16 @@ class DatabaseHelper(context: Context) :
         return writableDatabase.update(TABLE_BOOKS, cv, "$COL_BOOK_ID = ?", arrayOf(book.id.toString()))
     }
 
+    // Update only the cover image for a specific book
+    fun updateBookCover(bookId: Int, coverImage: String) {
+        val cv = ContentValues().apply { put(COL_BOOK_COVER_IMAGE, coverImage) }
+        writableDatabase.update(TABLE_BOOKS, cv, "$COL_BOOK_ID = ?", arrayOf(bookId.toString()))
+    }
+
     fun deleteBook(bookId: Int): Int {
-        // Option 1: Hapus juga semua riwayat peminjaman terkait
-        // writableDatabase.delete(TABLE_BORROWINGS, "$COL_BORROW_BOOK_ID = ?", arrayOf(bookId.toString()))
-        
+        writableDatabase.delete(TABLE_FAVORITES, "$COL_FAV_BOOK_ID = ?", arrayOf(bookId.toString()))
+        writableDatabase.delete(TABLE_REVIEWS, "$COL_REVIEW_BOOK_ID = ?", arrayOf(bookId.toString()))
+        writableDatabase.delete(TABLE_BORROWINGS, "$COL_BORROW_BOOK_ID = ?", arrayOf(bookId.toString()))
         return writableDatabase.delete(TABLE_BOOKS, "$COL_BOOK_ID = ?", arrayOf(bookId.toString()))
     }
 
@@ -308,13 +456,15 @@ class DatabaseHelper(context: Context) :
 
         val fmt = SimpleDateFormat("dd MMM yyyy", Locale("id", "ID"))
         val now = Date()
-        val due = Date(now.time + 14L * 24 * 60 * 60 * 1000)
+        val returnDate = Date(now.time + 14L * 24 * 60 * 60 * 1000)
+        val dueDate = Date(now.time + 13L * 24 * 60 * 60 * 1000)
 
         val cv = ContentValues().apply {
             put(COL_BORROW_USER_ID, userId)
             put(COL_BORROW_BOOK_ID, bookId)
             put(COL_BORROW_DATE, fmt.format(now))
-            put(COL_BORROW_RETURN_DATE, fmt.format(due))
+            put(COL_BORROW_RETURN_DATE, fmt.format(returnDate))
+            put(COL_BORROW_DUE_DATE, fmt.format(dueDate))
             put(COL_BORROW_STATUS, "borrowed")
         }
         val result = writableDatabase.insert(TABLE_BORROWINGS, null, cv)
@@ -362,6 +512,23 @@ class DatabaseHelper(context: Context) :
         return list
     }
 
+    fun getAllBorrowings(): List<Borrowing> {
+        val list = mutableListOf<Borrowing>()
+        val cursor = readableDatabase.rawQuery(
+            "SELECT b.*, bk.$COL_BOOK_TITLE, bk.$COL_BOOK_AUTHOR, bk.$COL_BOOK_COVER_COLOR, bk.$COL_BOOK_COVER_IMAGE " +
+            "FROM $TABLE_BORROWINGS b " +
+            "JOIN $TABLE_BOOKS bk ON b.$COL_BORROW_BOOK_ID = bk.$COL_BOOK_ID " +
+            "ORDER BY b.$COL_BORROW_ID DESC", null
+        )
+        while (cursor.moveToNext()) list.add(cursorToBorrowing(cursor))
+        cursor.close()
+        return list
+    }
+
+    fun getOverdueBorrowings(userId: Int): List<Borrowing> {
+        return getUserBorrowings(userId).filter { it.status == "borrowed" && it.isOverdue() }
+    }
+
     fun getTotalBorrowedCount(userId: Int): Int {
         val cursor = readableDatabase.rawQuery(
             "SELECT COUNT(*) FROM $TABLE_BORROWINGS WHERE $COL_BORROW_USER_ID = ?",
@@ -392,7 +559,188 @@ class DatabaseHelper(context: Context) :
         coverImage = c.getString(c.getColumnIndexOrThrow(COL_BOOK_COVER_IMAGE)) ?: "",
         borrowDate = c.getString(c.getColumnIndexOrThrow(COL_BORROW_DATE)) ?: "",
         returnDate = c.getString(c.getColumnIndexOrThrow(COL_BORROW_RETURN_DATE)) ?: "",
+        dueDate = c.getString(c.getColumnIndexOrThrow(COL_BORROW_DUE_DATE)) ?: "",
         status = c.getString(c.getColumnIndexOrThrow(COL_BORROW_STATUS)) ?: "borrowed",
+        notified = c.getInt(c.getColumnIndexOrThrow(COL_BORROW_NOTIFIED)) == 1,
         actualReturnDate = c.getString(c.getColumnIndexOrThrow(COL_BORROW_ACTUAL_RETURN_DATE))
     )
+
+    // ─── FAVORITE OPERATIONS ───────────────────────────────────
+
+    fun addFavorite(userId: Int, bookId: Int): Boolean {
+        val cv = ContentValues().apply {
+            put(COL_FAV_USER_ID, userId)
+            put(COL_FAV_BOOK_ID, bookId)
+        }
+        return try {
+            writableDatabase.insertOrThrow(TABLE_FAVORITES, null, cv) > 0
+        } catch (e: Exception) { false }
+    }
+
+    fun removeFavorite(userId: Int, bookId: Int): Boolean {
+        return writableDatabase.delete(
+            TABLE_FAVORITES,
+            "$COL_FAV_USER_ID = ? AND $COL_FAV_BOOK_ID = ?",
+            arrayOf(userId.toString(), bookId.toString())
+        ) > 0
+    }
+
+    fun isFavorite(userId: Int, bookId: Int): Boolean {
+        val cursor = readableDatabase.query(
+            TABLE_FAVORITES, arrayOf(COL_FAV_ID),
+            "$COL_FAV_USER_ID = ? AND $COL_FAV_BOOK_ID = ?",
+            arrayOf(userId.toString(), bookId.toString()), null, null, null
+        )
+        val exists = cursor.count > 0
+        cursor.close()
+        return exists
+    }
+
+    fun getUserFavorites(userId: Int): List<Book> {
+        val list = mutableListOf<Book>()
+        val cursor = readableDatabase.rawQuery(
+            "SELECT bk.* FROM $TABLE_BOOKS bk " +
+            "JOIN $TABLE_FAVORITES f ON bk.$COL_BOOK_ID = f.$COL_FAV_BOOK_ID " +
+            "WHERE f.$COL_FAV_USER_ID = ? ORDER BY bk.$COL_BOOK_TITLE",
+            arrayOf(userId.toString())
+        )
+        while (cursor.moveToNext()) list.add(cursorToBook(cursor))
+        cursor.close()
+        return list
+    }
+
+    // ─── REVIEW OPERATIONS ─────────────────────────────────────
+
+    fun addReview(review: Review): Boolean {
+        val fmt = SimpleDateFormat("dd MMM yyyy", Locale("id", "ID"))
+        val cv = ContentValues().apply {
+            put(COL_REVIEW_USER_ID, review.userId)
+            put(COL_REVIEW_BOOK_ID, review.bookId)
+            put(COL_REVIEW_RATING, review.rating)
+            put(COL_REVIEW_COMMENT, review.comment)
+            put(COL_REVIEW_DATE, fmt.format(Date()))
+        }
+        return writableDatabase.insert(TABLE_REVIEWS, null, cv) > 0
+    }
+
+    // Update an existing review (only by its owner)
+    fun updateReview(review: Review): Boolean {
+        val fmt = SimpleDateFormat("dd MMM yyyy", Locale("id", "ID"))
+        val cv = ContentValues().apply {
+            put(COL_REVIEW_RATING, review.rating)
+            put(COL_REVIEW_COMMENT, review.comment)
+            put(COL_REVIEW_DATE, fmt.format(Date()))
+        }
+        val rows = writableDatabase.update(
+            TABLE_REVIEWS,
+            cv,
+            "$COL_REVIEW_ID = ? AND $COL_REVIEW_USER_ID = ?",
+            arrayOf(review.id.toString(), review.userId.toString())
+        )
+        return rows > 0
+    }
+
+    // Delete a review (only by its owner)
+    fun deleteReview(reviewId: Int, userId: Int): Boolean {
+        val rows = writableDatabase.delete(
+            TABLE_REVIEWS,
+            "$COL_REVIEW_ID = ? AND $COL_REVIEW_USER_ID = ?",
+            arrayOf(reviewId.toString(), userId.toString())
+        )
+        return rows > 0
+    }
+
+    fun getReviewsForBook(bookId: Int): List<Review> {
+        val list = mutableListOf<Review>()
+        val cursor = readableDatabase.rawQuery(
+            "SELECT r.*, u.$COL_USER_NAME FROM $TABLE_REVIEWS r " +
+            "JOIN $TABLE_USERS u ON r.$COL_REVIEW_USER_ID = u.$COL_USER_ID " +
+            "WHERE r.$COL_REVIEW_BOOK_ID = ? ORDER BY r.$COL_REVIEW_ID DESC",
+            arrayOf(bookId.toString())
+        )
+        while (cursor.moveToNext()) {
+            list.add(Review(
+                id = cursor.getInt(cursor.getColumnIndexOrThrow(COL_REVIEW_ID)),
+                userId = cursor.getInt(cursor.getColumnIndexOrThrow(COL_REVIEW_USER_ID)),
+                bookId = cursor.getInt(cursor.getColumnIndexOrThrow(COL_REVIEW_BOOK_ID)),
+                userName = cursor.getString(cursor.getColumnIndexOrThrow(COL_USER_NAME)) ?: "",
+                rating = cursor.getFloat(cursor.getColumnIndexOrThrow(COL_REVIEW_RATING)),
+                comment = cursor.getString(cursor.getColumnIndexOrThrow(COL_REVIEW_COMMENT)) ?: "",
+                date = cursor.getString(cursor.getColumnIndexOrThrow(COL_REVIEW_DATE)) ?: ""
+            ))
+        }
+        cursor.close()
+        return list
+    }
+
+    fun getAverageRating(bookId: Int): Float {
+        val cursor = readableDatabase.rawQuery(
+            "SELECT AVG($COL_REVIEW_RATING) FROM $TABLE_REVIEWS WHERE $COL_REVIEW_BOOK_ID = ?",
+            arrayOf(bookId.toString())
+        )
+        val avg = if (cursor.moveToFirst()) cursor.getFloat(0) else 0f
+        cursor.close()
+        return avg
+    }
+
+    fun hasUserReviewed(userId: Int, bookId: Int): Boolean {
+        val cursor = readableDatabase.query(
+            TABLE_REVIEWS, arrayOf(COL_REVIEW_ID),
+            "$COL_REVIEW_USER_ID = ? AND $COL_REVIEW_BOOK_ID = ?",
+            arrayOf(userId.toString(), bookId.toString()), null, null, null
+        )
+        val exists = cursor.count > 0
+        cursor.close()
+        return exists
+    }
+    
+    // ─── ADMIN REVIEW OPERATIONS ─────────────────────────────────────
+    fun isAdmin(userId: Int): Boolean {
+        val cursor = readableDatabase.query(
+            TABLE_USERS, arrayOf(COL_USER_EMAIL),
+            "$COL_USER_ID = ?", arrayOf(userId.toString()), null, null, null
+        )
+        val admin = if (cursor.moveToFirst()) {
+            cursor.getString(0) == "admin@perpustakaan.com"
+        } else false
+        cursor.close()
+        return admin
+    }
+
+    fun adminUpdateReview(reviewId: Int, rating: Float, comment: String): Boolean {
+        val fmt = SimpleDateFormat("dd MMM yyyy", Locale("id", "ID"))
+        val cv = ContentValues().apply {
+            put(COL_REVIEW_RATING, rating)
+            put(COL_REVIEW_COMMENT, comment)
+            put(COL_REVIEW_DATE, fmt.format(Date()))
+        }
+        val rows = writableDatabase.update(
+            TABLE_REVIEWS,
+            cv,
+            "$COL_REVIEW_ID = ?",
+            arrayOf(reviewId.toString())
+        )
+        return rows > 0
+    }
+
+    // Fix incorrect cover image for specific book titles (development utility)
+    fun fixBookCover(title: String, correctCover: String) {
+        writableDatabase.execSQL("UPDATE $TABLE_BOOKS SET $COL_BOOK_COVER_IMAGE = ? WHERE $COL_BOOK_TITLE = ?", arrayOf(correctCover, title))
+    }
+
+    fun adminDeleteReview(reviewId: Int): Boolean {
+        val rows = writableDatabase.delete(
+            TABLE_REVIEWS,
+            "$COL_REVIEW_ID = ?",
+            arrayOf(reviewId.toString())
+        )
+        return rows > 0
+    }
+
+    // Existing closing brace
+    // Reset sample books data – useful during development to ensure cover images match titles
+    fun resetSampleData() {
+        writableDatabase.execSQL("DELETE FROM $TABLE_BOOKS")
+        insertSampleData(writableDatabase)
+    }
 }

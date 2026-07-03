@@ -31,7 +31,7 @@ class BookAdapter(
             binding.tvBookAuthor.text = book.author
             binding.tvBookCategory.text = book.category
 
-            ImageUtils.loadBookCover(binding.root.context, book.coverImage, book.coverColor, binding.ivCoverImage)
+            ImageUtils.loadBookCover(binding.root.context, book.coverImage, book.coverColor, book.title, book.author, binding.ivCoverImage)
 
             if (book.availableCopies > 0) {
                 binding.tvAvailable.text = "${book.availableCopies} tersedia"

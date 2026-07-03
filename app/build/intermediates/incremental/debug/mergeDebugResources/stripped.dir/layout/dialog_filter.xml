@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Urutkan:"
+        android:textColor="@color/text_primary"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spinnerSort"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_rounded_primary_light"
+        android:padding="8dp" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchAvailable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hanya tampilkan yang tersedia"
+        android:textColor="@color/text_primary"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        android:padding="8dp" />
+</LinearLayout>

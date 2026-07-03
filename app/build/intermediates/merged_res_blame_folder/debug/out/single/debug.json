@@ -1,162 +1,234 @@
 [
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\layout_fragment_home.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\fragment_home.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_activity_book_detail.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_book_detail.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_ic_add.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\ic_add.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_item_borrowing.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/item_borrowing.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\layout_fragment_search.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\fragment_search.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_cover_bumi_manusia.jpg.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/cover_bumi_manusia.jpg"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\layout_activity_about.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\activity_about.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_favorite.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/ic_favorite.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\layout_activity_home.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\activity_home.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_fragment_members.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/fragment_members.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_ic_delete.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\ic_delete.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_favorite_border.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/ic_favorite_border.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_cover_dilan_1990.jpg.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\cover_dilan_1990.jpg"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_cover_perahu_kertas.jpg.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/cover_perahu_kertas.jpg"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_cover_perahu_kertas.jpg.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\cover_perahu_kertas.jpg"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_search.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/ic_search.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\layout_fragment_profile.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\fragment_profile.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_activity_home.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_home.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\layout_activity_splash.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\activity_splash.xml"
-    },
-    {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\layout_activity_book_detail.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\activity_book_detail.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_cover_dilan_1990.jpg.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/cover_dilan_1990.jpg"
     },
     {
         "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_library.xml.flat",
         "source": "com.example.perpustakaan.app-main-6:/drawable/ic_library.xml"
     },
     {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_activity_about.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_about.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_book_placeholder.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/ic_book_placeholder.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_fragment_home.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_activity_register.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_register.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_bg_badge_borrow.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/bg_badge_borrow.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_activity_login.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_fragment_search.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/fragment_search.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_cover_negeri_5_menara.jpg.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/cover_negeri_5_menara.jpg"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_activity_admin_dashboard.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_admin_dashboard.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_dialog_filter.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/dialog_filter.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_bg_gradient_splash.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/bg_gradient_splash.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_add.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/ic_add.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_edit.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/ic_edit.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_cover_laskar_pelangi.jpg.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/cover_laskar_pelangi.jpg"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_cover_filosofi_teras.jpg.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/cover_filosofi_teras.jpg"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_activity_splash.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_dialog_add_review.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/dialog_add_review.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_profile.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/ic_profile.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_home.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/ic_home.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_delete.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/ic_delete.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/color_nav_color.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/color/nav_color.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_fragment_favorite.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/fragment_favorite.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/menu_bottom_nav_menu.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/menu/bottom_nav_menu.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_item_review.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/item_review.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_activity_admin_members.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_admin_members.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_item_admin_book.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/item_admin_book.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_dialog_member_borrowings.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/dialog_member_borrowings.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_activity_add_edit_book.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_add_edit_book.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_history.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/ic_history.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_item_member.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/item_member.xml"
+    },
+    {
         "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_bg_rounded_primary_light.xml.flat",
         "source": "com.example.perpustakaan.app-main-6:/drawable/bg_rounded_primary_light.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_ic_home.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\ic_home.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_activity_search.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_search.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_ic_book_placeholder.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\ic_book_placeholder.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_item_member_borrow_detail.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/item_member_borrow_detail.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_ic_search.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\ic_search.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_people.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/ic_people.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\layout_activity_register.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\activity_register.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_filter.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/ic_filter.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_ic_edit.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\ic_edit.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_bg_avatar.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/bg_avatar.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\layout_activity_admin_dashboard.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\activity_admin_dashboard.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_item_book.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/item_book.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_ic_my_books.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\ic_my_books.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_fragment_profile.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/fragment_profile.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_bg_gradient_splash.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\bg_gradient_splash.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_fragment_my_books.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/fragment_my_books.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\layout_item_admin_book.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\item_admin_book.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/layout_activity_admin_borrow_history.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_admin_borrow_history.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_cover_bumi_manusia.jpg.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\cover_bumi_manusia.jpg"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_my_books.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/ic_my_books.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_ic_back.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\ic_back.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\layout_activity_login.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\activity_login.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_back.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/ic_back.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\mipmap-anydpi-v26\\ic_launcher.xml"
-    },
-    {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
-    },
-    {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_cover_filosofi_teras.jpg.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\cover_filosofi_teras.jpg"
-    },
-    {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_ic_profile.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\ic_profile.xml"
-    },
-    {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\layout_fragment_my_books.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\fragment_my_books.xml"
-    },
-    {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_cover_laskar_pelangi.jpg.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\cover_laskar_pelangi.jpg"
-    },
-    {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\layout_activity_add_edit_book.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\activity_add_edit_book.xml"
-    },
-    {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\color_nav_color.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\color\\nav_color.xml"
-    },
-    {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\layout_item_borrowing.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\item_borrowing.xml"
-    },
-    {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\layout_item_book.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\item_book.xml"
-    },
-    {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_bg_avatar.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\bg_avatar.xml"
-    },
-    {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\ic_launcher_foreground.xml"
-    },
-    {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\ic_launcher_background.xml"
-    },
-    {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\drawable_cover_negeri_5_menara.jpg.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\drawable\\cover_negeri_5_menara.jpg"
-    },
-    {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-merged_res-4:\\menu_bottom_nav_menu.xml.flat",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\menu\\bottom_nav_menu.xml"
+        "merged": "com.example.perpustakaan.app-merged_res-4:/drawable_ic_star.xml.flat",
+        "source": "com.example.perpustakaan.app-main-6:/drawable/ic_star.xml"
     }
 ]

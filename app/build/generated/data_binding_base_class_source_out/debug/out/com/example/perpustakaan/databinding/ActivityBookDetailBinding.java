@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.perpustakaan.R;
@@ -23,10 +24,16 @@ public final class ActivityBookDetailBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
+  public final Button btnAddReview;
+
+  @NonNull
   public final ImageButton btnBack;
 
   @NonNull
   public final Button btnBorrowReturn;
+
+  @NonNull
+  public final ImageButton btnFavorite;
 
   @NonNull
   public final ImageView ivCoverImage;
@@ -35,7 +42,16 @@ public final class ActivityBookDetailBinding implements ViewBinding {
   public final LinearLayout layoutHeader;
 
   @NonNull
+  public final LinearLayout layoutRating;
+
+  @NonNull
+  public final RecyclerView rvReviews;
+
+  @NonNull
   public final TextView tvAvailableCopies;
+
+  @NonNull
+  public final TextView tvAverageRating;
 
   @NonNull
   public final TextView tvBookAuthor;
@@ -53,24 +69,41 @@ public final class ActivityBookDetailBinding implements ViewBinding {
   public final TextView tvIsbn;
 
   @NonNull
+  public final TextView tvNoReviews;
+
+  @NonNull
+  public final TextView tvReviewCount;
+
+  @NonNull
   public final TextView tvYear;
 
-  private ActivityBookDetailBinding(@NonNull LinearLayout rootView, @NonNull ImageButton btnBack,
-      @NonNull Button btnBorrowReturn, @NonNull ImageView ivCoverImage,
-      @NonNull LinearLayout layoutHeader, @NonNull TextView tvAvailableCopies,
-      @NonNull TextView tvBookAuthor, @NonNull TextView tvBookTitle, @NonNull TextView tvCategory,
-      @NonNull TextView tvDescription, @NonNull TextView tvIsbn, @NonNull TextView tvYear) {
+  private ActivityBookDetailBinding(@NonNull LinearLayout rootView, @NonNull Button btnAddReview,
+      @NonNull ImageButton btnBack, @NonNull Button btnBorrowReturn,
+      @NonNull ImageButton btnFavorite, @NonNull ImageView ivCoverImage,
+      @NonNull LinearLayout layoutHeader, @NonNull LinearLayout layoutRating,
+      @NonNull RecyclerView rvReviews, @NonNull TextView tvAvailableCopies,
+      @NonNull TextView tvAverageRating, @NonNull TextView tvBookAuthor,
+      @NonNull TextView tvBookTitle, @NonNull TextView tvCategory, @NonNull TextView tvDescription,
+      @NonNull TextView tvIsbn, @NonNull TextView tvNoReviews, @NonNull TextView tvReviewCount,
+      @NonNull TextView tvYear) {
     this.rootView = rootView;
+    this.btnAddReview = btnAddReview;
     this.btnBack = btnBack;
     this.btnBorrowReturn = btnBorrowReturn;
+    this.btnFavorite = btnFavorite;
     this.ivCoverImage = ivCoverImage;
     this.layoutHeader = layoutHeader;
+    this.layoutRating = layoutRating;
+    this.rvReviews = rvReviews;
     this.tvAvailableCopies = tvAvailableCopies;
+    this.tvAverageRating = tvAverageRating;
     this.tvBookAuthor = tvBookAuthor;
     this.tvBookTitle = tvBookTitle;
     this.tvCategory = tvCategory;
     this.tvDescription = tvDescription;
     this.tvIsbn = tvIsbn;
+    this.tvNoReviews = tvNoReviews;
+    this.tvReviewCount = tvReviewCount;
     this.tvYear = tvYear;
   }
 
@@ -101,6 +134,12 @@ public final class ActivityBookDetailBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnAddReview;
+      Button btnAddReview = ViewBindings.findChildViewById(rootView, id);
+      if (btnAddReview == null) {
+        break missingId;
+      }
+
       id = R.id.btnBack;
       ImageButton btnBack = ViewBindings.findChildViewById(rootView, id);
       if (btnBack == null) {
@@ -110,6 +149,12 @@ public final class ActivityBookDetailBinding implements ViewBinding {
       id = R.id.btnBorrowReturn;
       Button btnBorrowReturn = ViewBindings.findChildViewById(rootView, id);
       if (btnBorrowReturn == null) {
+        break missingId;
+      }
+
+      id = R.id.btnFavorite;
+      ImageButton btnFavorite = ViewBindings.findChildViewById(rootView, id);
+      if (btnFavorite == null) {
         break missingId;
       }
 
@@ -125,9 +170,27 @@ public final class ActivityBookDetailBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.layoutRating;
+      LinearLayout layoutRating = ViewBindings.findChildViewById(rootView, id);
+      if (layoutRating == null) {
+        break missingId;
+      }
+
+      id = R.id.rvReviews;
+      RecyclerView rvReviews = ViewBindings.findChildViewById(rootView, id);
+      if (rvReviews == null) {
+        break missingId;
+      }
+
       id = R.id.tvAvailableCopies;
       TextView tvAvailableCopies = ViewBindings.findChildViewById(rootView, id);
       if (tvAvailableCopies == null) {
+        break missingId;
+      }
+
+      id = R.id.tvAverageRating;
+      TextView tvAverageRating = ViewBindings.findChildViewById(rootView, id);
+      if (tvAverageRating == null) {
         break missingId;
       }
 
@@ -161,15 +224,28 @@ public final class ActivityBookDetailBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvNoReviews;
+      TextView tvNoReviews = ViewBindings.findChildViewById(rootView, id);
+      if (tvNoReviews == null) {
+        break missingId;
+      }
+
+      id = R.id.tvReviewCount;
+      TextView tvReviewCount = ViewBindings.findChildViewById(rootView, id);
+      if (tvReviewCount == null) {
+        break missingId;
+      }
+
       id = R.id.tvYear;
       TextView tvYear = ViewBindings.findChildViewById(rootView, id);
       if (tvYear == null) {
         break missingId;
       }
 
-      return new ActivityBookDetailBinding((LinearLayout) rootView, btnBack, btnBorrowReturn,
-          ivCoverImage, layoutHeader, tvAvailableCopies, tvBookAuthor, tvBookTitle, tvCategory,
-          tvDescription, tvIsbn, tvYear);
+      return new ActivityBookDetailBinding((LinearLayout) rootView, btnAddReview, btnBack,
+          btnBorrowReturn, btnFavorite, ivCoverImage, layoutHeader, layoutRating, rvReviews,
+          tvAvailableCopies, tvAverageRating, tvBookAuthor, tvBookTitle, tvCategory, tvDescription,
+          tvIsbn, tvNoReviews, tvReviewCount, tvYear);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

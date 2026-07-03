@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.example.perpustakaan.AboutActivity
 import com.example.perpustakaan.AdminDashboardActivity
@@ -29,6 +30,18 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         db = DatabaseHelper(requireContext())
         loadProfile()
+
+        // Dark mode toggle
+        val prefs = requireContext().getSharedPreferences("PerpustakaanApp", Context.MODE_PRIVATE)
+        binding.switchDarkMode.isChecked = prefs.getBoolean("dark_mode", false)
+        binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
+            prefs.edit().putBoolean("dark_mode", isChecked).apply()
+            if (isChecked) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
 
         binding.btnAbout.setOnClickListener {
             startActivity(Intent(requireContext(), AboutActivity::class.java))

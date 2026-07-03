@@ -4,9 +4,11 @@ package com.example.perpustakaan.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
@@ -22,6 +24,12 @@ public final class FragmentHomeBinding implements ViewBinding {
   private final NestedScrollView rootView;
 
   @NonNull
+  public final ImageButton btnFilter;
+
+  @NonNull
+  public final CardView cardOverdue;
+
+  @NonNull
   public final ChipGroup chipGroup;
 
   @NonNull
@@ -34,20 +42,27 @@ public final class FragmentHomeBinding implements ViewBinding {
   public final TextView tvNoBooksMessage;
 
   @NonNull
+  public final TextView tvOverdueMessage;
+
+  @NonNull
   public final TextView tvSearchHint;
 
   @NonNull
   public final TextView tvUsername;
 
-  private FragmentHomeBinding(@NonNull NestedScrollView rootView, @NonNull ChipGroup chipGroup,
-      @NonNull RecyclerView rvBooks, @NonNull TextView tvGreeting,
-      @NonNull TextView tvNoBooksMessage, @NonNull TextView tvSearchHint,
+  private FragmentHomeBinding(@NonNull NestedScrollView rootView, @NonNull ImageButton btnFilter,
+      @NonNull CardView cardOverdue, @NonNull ChipGroup chipGroup, @NonNull RecyclerView rvBooks,
+      @NonNull TextView tvGreeting, @NonNull TextView tvNoBooksMessage,
+      @NonNull TextView tvOverdueMessage, @NonNull TextView tvSearchHint,
       @NonNull TextView tvUsername) {
     this.rootView = rootView;
+    this.btnFilter = btnFilter;
+    this.cardOverdue = cardOverdue;
     this.chipGroup = chipGroup;
     this.rvBooks = rvBooks;
     this.tvGreeting = tvGreeting;
     this.tvNoBooksMessage = tvNoBooksMessage;
+    this.tvOverdueMessage = tvOverdueMessage;
     this.tvSearchHint = tvSearchHint;
     this.tvUsername = tvUsername;
   }
@@ -79,6 +94,18 @@ public final class FragmentHomeBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnFilter;
+      ImageButton btnFilter = ViewBindings.findChildViewById(rootView, id);
+      if (btnFilter == null) {
+        break missingId;
+      }
+
+      id = R.id.cardOverdue;
+      CardView cardOverdue = ViewBindings.findChildViewById(rootView, id);
+      if (cardOverdue == null) {
+        break missingId;
+      }
+
       id = R.id.chipGroup;
       ChipGroup chipGroup = ViewBindings.findChildViewById(rootView, id);
       if (chipGroup == null) {
@@ -103,6 +130,12 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvOverdueMessage;
+      TextView tvOverdueMessage = ViewBindings.findChildViewById(rootView, id);
+      if (tvOverdueMessage == null) {
+        break missingId;
+      }
+
       id = R.id.tvSearchHint;
       TextView tvSearchHint = ViewBindings.findChildViewById(rootView, id);
       if (tvSearchHint == null) {
@@ -115,8 +148,8 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentHomeBinding((NestedScrollView) rootView, chipGroup, rvBooks, tvGreeting,
-          tvNoBooksMessage, tvSearchHint, tvUsername);
+      return new FragmentHomeBinding((NestedScrollView) rootView, btnFilter, cardOverdue, chipGroup,
+          rvBooks, tvGreeting, tvNoBooksMessage, tvOverdueMessage, tvSearchHint, tvUsername);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

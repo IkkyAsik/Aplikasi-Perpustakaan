@@ -8,3 +8,12 @@ data class User(
     val phone: String = "",
     val createdAt: String = ""
 )
+
+data class MemberBorrowInfo(
+    val id: Int,
+    val name: String,
+    val email: String,
+    val phone: String,
+    val createdAt: String,
+    val activeBorrowCount: Int
+)

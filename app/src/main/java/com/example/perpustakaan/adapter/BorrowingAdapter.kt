@@ -31,15 +31,36 @@ class BorrowingAdapter(
             binding.tvBorrowTitle.text = borrowing.bookTitle
             binding.tvBorrowAuthor.text = borrowing.bookAuthor
             
-            ImageUtils.loadBookCover(binding.root.context, borrowing.coverImage, borrowing.coverColor, binding.ivCoverImage)
+            ImageUtils.loadBookCover(binding.root.context, borrowing.coverImage, borrowing.coverColor, borrowing.bookTitle, borrowing.bookAuthor, binding.ivCoverImage)
 
             binding.tvBorrowDate.text = "Dipinjam: ${borrowing.borrowDate}"
-            binding.tvReturnDate.text = "Jatuh Tempo: ${borrowing.returnDate}"
-
+            // Calculate days left until due date
+            val daysLeft = try {
+                val fmt = java.text.SimpleDateFormat("dd MMM yyyy", java.util.Locale("id", "ID"))
+                val due = fmt.parse(borrowing.dueDate)
+                if (due == null) {
+                    null
+                } else {
+                    val diffMs = due.time - java.util.Date().time
+                    java.util.concurrent.TimeUnit.MILLISECONDS.toDays(diffMs)
+                }
+            } catch (e: Exception) { null }
+            if (daysLeft != null && daysLeft >= 0) {
+                binding.tvReturnDate.text = "Jatuh Tempo: ${borrowing.returnDate} (${daysLeft} hari lagi)"
+            } else {
+                binding.tvReturnDate.text = "Jatuh Tempo: ${borrowing.returnDate}"
+            }
             if (borrowing.status == "borrowed") {
-                binding.tvStatus.text = "Dipinjam"
-                binding.tvStatus.setBackgroundColor(Color.parseColor("#2980B9"))
-                binding.tvStatus.setTextColor(Color.WHITE)
+                // Check overdue
+                if (borrowing.isOverdue()) {
+                    binding.tvStatus.text = "Overdue"
+                    binding.tvStatus.setBackgroundColor(Color.parseColor("#E74C3C")) // red
+                    binding.tvStatus.setTextColor(Color.WHITE)
+                } else {
+                    binding.tvStatus.text = "Dipinjam"
+                    binding.tvStatus.setBackgroundColor(Color.parseColor("#2980B9"))
+                    binding.tvStatus.setTextColor(Color.WHITE)
+                }
                 binding.btnReturn.visibility = View.VISIBLE
                 binding.btnReturn.setOnClickListener { onReturnClick(borrowing) }
             } else {

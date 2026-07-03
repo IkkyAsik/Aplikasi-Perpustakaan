@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -28,6 +29,9 @@
         <activity android:name=".AdminDashboardActivity" android:exported="false" />
         <activity android:name=".AddEditBookActivity" android:exported="false" />
         <activity android:name=".AboutActivity" android:exported="false" />
+        <activity android:name=".AdminBorrowHistoryActivity" android:exported="false" />
+        <activity android:name=".AdminMembersActivity" android:exported="false" />
+        <activity android:name=".SearchActivity" android:exported="false" />
     </application>
 
 </manifest>

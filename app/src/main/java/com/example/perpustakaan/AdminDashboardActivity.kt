@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.perpustakaan.adapter.AdminBookAdapter
 import com.example.perpustakaan.database.DatabaseHelper
 import com.example.perpustakaan.databinding.ActivityAdminDashboardBinding
@@ -23,12 +24,7 @@ class AdminDashboardActivity : AppCompatActivity() {
 
         db = DatabaseHelper(this)
 
-        binding.btnBack.setOnClickListener { finish() }
-
-        binding.fabAddBook.setOnClickListener {
-            startActivity(Intent(this, AddEditBookActivity::class.java))
-        }
-
+        // Setup RecyclerView
         adapter = AdminBookAdapter(
             onEditClick = { book ->
                 val intent = Intent(this, AddEditBookActivity::class.java)
@@ -39,12 +35,32 @@ class AdminDashboardActivity : AppCompatActivity() {
                 showDeleteDialog(book)
             }
         )
-        binding.rvAdminBooks.adapter = adapter
+
+        binding.rvAdminBooks.apply {
+            layoutManager = LinearLayoutManager(this@AdminDashboardActivity)
+            adapter = this@AdminDashboardActivity.adapter
+        }
+
+        // Click Listeners
+        binding.btnBack.setOnClickListener { finish() }
+
+        binding.fabAddBook.setOnClickListener {
+            startActivity(Intent(this, AddEditBookActivity::class.java))
+        }
+
+        binding.btnBorrowHistory.setOnClickListener {
+            startActivity(Intent(this, AdminBorrowHistoryActivity::class.java))
+        }
+
+        binding.btnViewMembers.setOnClickListener {
+            startActivity(Intent(this, AdminMembersActivity::class.java))
+        }
     }
 
     override fun onResume() {
         super.onResume()
         loadBooks()
+        loadStats()
     }
 
     private fun loadBooks() {
@@ -52,14 +68,24 @@ class AdminDashboardActivity : AppCompatActivity() {
         adapter.submitList(books)
     }
 
+    private fun loadStats() {
+        // Menggunakan "let" agar lebih aman jika views null
+        binding.tvStatBooks.text = db.getTotalBooksCount().toString()
+        binding.tvStatUsers.text = db.getTotalUsersCount().toString()
+        binding.tvStatBorrowed.text = db.getTotalActiveBorrowingsCount().toString()
+    }
+
     private fun showDeleteDialog(book: Book) {
         AlertDialog.Builder(this)
             .setTitle("Hapus Buku")
             .setMessage("Yakin ingin menghapus '${book.title}'?")
             .setPositiveButton("Hapus") { _, _ ->
-                if (db.deleteBook(book.id) > 0) {
+                // Memastikan deleteBook di DatabaseHelper mengembalikan Int > 0
+                val result = db.deleteBook(book.id)
+                if (result > 0) {
                     Toast.makeText(this, "Buku berhasil dihapus", Toast.LENGTH_SHORT).show()
-                    loadBooks()
+                    loadBooks() // Update list
+                    loadStats() // Update angka statistik
                 } else {
                     Toast.makeText(this, "Gagal menghapus buku", Toast.LENGTH_SHORT).show()
                 }

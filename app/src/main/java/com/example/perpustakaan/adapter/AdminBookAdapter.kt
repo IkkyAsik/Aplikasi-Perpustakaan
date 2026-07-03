@@ -31,7 +31,7 @@ class AdminBookAdapter(
             binding.tvTitle.text = book.title
             binding.tvAuthor.text = book.author
 
-            ImageUtils.loadBookCover(binding.root.context, book.coverImage, book.coverColor, binding.ivCoverImage)
+            ImageUtils.loadBookCover(binding.root.context, book.coverImage, book.coverColor, book.title, book.author, binding.ivCoverImage)
 
             binding.tvAvailable.text = "${book.availableCopies} dari ${book.totalCopies} tersedia"
             if (book.availableCopies > 0) {

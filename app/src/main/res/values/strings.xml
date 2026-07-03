@@ -22,7 +22,7 @@
 
     <string name="nav_home">Beranda</string>
     <string name="nav_search">Cari</string>
-    <string name="nav_my_books">Buku Saya</string>
+    <string name="nav_my_books">Daftar Buku Di Pinjam</string>
     <string name="nav_profile">Profil</string>
     <string name="greeting_morning">Selamat Pagi,</string>
     <string name="greeting_afternoon">Selamat Siang,</string>
@@ -40,7 +40,7 @@
     <string name="btn_return">Kembalikan Buku</string>
     <string name="btn_unavailable">Tidak Tersedia</string>
 
-    <string name="my_books_title">Buku Saya</string>
+    <string name="my_books_title">Daftar Buku Di Pinjam</string>
     <string name="no_borrowed_books">Anda belum meminjam buku</string>
 
     <string name="profile_title">Profil</string>

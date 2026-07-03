@@ -4,7 +4,9 @@ package com.example.perpustakaan.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -25,18 +27,40 @@ public final class ActivityAdminDashboardBinding implements ViewBinding {
   public final ImageButton btnBack;
 
   @NonNull
+  public final Button btnBorrowHistory;
+
+  @NonNull
+  public final Button btnViewMembers;
+
+  @NonNull
   public final FloatingActionButton fabAddBook;
 
   @NonNull
   public final RecyclerView rvAdminBooks;
 
+  @NonNull
+  public final TextView tvStatBooks;
+
+  @NonNull
+  public final TextView tvStatBorrowed;
+
+  @NonNull
+  public final TextView tvStatUsers;
+
   private ActivityAdminDashboardBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull ImageButton btnBack, @NonNull FloatingActionButton fabAddBook,
-      @NonNull RecyclerView rvAdminBooks) {
+      @NonNull ImageButton btnBack, @NonNull Button btnBorrowHistory,
+      @NonNull Button btnViewMembers, @NonNull FloatingActionButton fabAddBook,
+      @NonNull RecyclerView rvAdminBooks, @NonNull TextView tvStatBooks,
+      @NonNull TextView tvStatBorrowed, @NonNull TextView tvStatUsers) {
     this.rootView = rootView;
     this.btnBack = btnBack;
+    this.btnBorrowHistory = btnBorrowHistory;
+    this.btnViewMembers = btnViewMembers;
     this.fabAddBook = fabAddBook;
     this.rvAdminBooks = rvAdminBooks;
+    this.tvStatBooks = tvStatBooks;
+    this.tvStatBorrowed = tvStatBorrowed;
+    this.tvStatUsers = tvStatUsers;
   }
 
   @Override
@@ -72,6 +96,18 @@ public final class ActivityAdminDashboardBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btnBorrowHistory;
+      Button btnBorrowHistory = ViewBindings.findChildViewById(rootView, id);
+      if (btnBorrowHistory == null) {
+        break missingId;
+      }
+
+      id = R.id.btnViewMembers;
+      Button btnViewMembers = ViewBindings.findChildViewById(rootView, id);
+      if (btnViewMembers == null) {
+        break missingId;
+      }
+
       id = R.id.fabAddBook;
       FloatingActionButton fabAddBook = ViewBindings.findChildViewById(rootView, id);
       if (fabAddBook == null) {
@@ -84,8 +120,27 @@ public final class ActivityAdminDashboardBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityAdminDashboardBinding((CoordinatorLayout) rootView, btnBack, fabAddBook,
-          rvAdminBooks);
+      id = R.id.tvStatBooks;
+      TextView tvStatBooks = ViewBindings.findChildViewById(rootView, id);
+      if (tvStatBooks == null) {
+        break missingId;
+      }
+
+      id = R.id.tvStatBorrowed;
+      TextView tvStatBorrowed = ViewBindings.findChildViewById(rootView, id);
+      if (tvStatBorrowed == null) {
+        break missingId;
+      }
+
+      id = R.id.tvStatUsers;
+      TextView tvStatUsers = ViewBindings.findChildViewById(rootView, id);
+      if (tvStatUsers == null) {
+        break missingId;
+      }
+
+      return new ActivityAdminDashboardBinding((CoordinatorLayout) rootView, btnBack,
+          btnBorrowHistory, btnViewMembers, fabAddBook, rvAdminBooks, tvStatBooks, tvStatBorrowed,
+          tvStatUsers);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

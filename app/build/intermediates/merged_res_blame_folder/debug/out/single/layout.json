@@ -1,70 +1,106 @@
 [
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-mergeDebugResources-3:\\layout\\fragment_home.xml",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\fragment_home.xml"
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/item_book.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/item_book.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-mergeDebugResources-3:\\layout\\item_borrowing.xml",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\item_borrowing.xml"
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/dialog_filter.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/dialog_filter.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-mergeDebugResources-3:\\layout\\activity_admin_dashboard.xml",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\activity_admin_dashboard.xml"
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/item_admin_book.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/item_admin_book.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-mergeDebugResources-3:\\layout\\activity_add_edit_book.xml",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\activity_add_edit_book.xml"
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/fragment_my_books.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/fragment_my_books.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-mergeDebugResources-3:\\layout\\item_book.xml",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\item_book.xml"
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/activity_admin_dashboard.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_admin_dashboard.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-mergeDebugResources-3:\\layout\\fragment_my_books.xml",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\fragment_my_books.xml"
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/item_member.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/item_member.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-mergeDebugResources-3:\\layout\\activity_login.xml",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\activity_login.xml"
-    },
-    {
-        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/activity_about.xml",
-        "source": "com.example.perpustakaan.app-main-6:/layout/activity_about.xml"
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/item_member_borrow_detail.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/item_member_borrow_detail.xml"
     },
     {
         "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/activity_splash.xml",
         "source": "com.example.perpustakaan.app-main-6:/layout/activity_splash.xml"
     },
     {
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/fragment_search.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/fragment_search.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/fragment_favorite.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/fragment_favorite.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/activity_add_edit_book.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_add_edit_book.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/dialog_member_borrowings.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/dialog_member_borrowings.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/activity_register.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_register.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/dialog_add_review.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/dialog_add_review.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/fragment_home.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/activity_admin_members.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_admin_members.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/activity_about.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_about.xml"
+    },
+    {
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/activity_admin_borrow_history.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_admin_borrow_history.xml"
+    },
+    {
         "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/fragment_profile.xml",
         "source": "com.example.perpustakaan.app-main-6:/layout/fragment_profile.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-mergeDebugResources-3:\\layout\\activity_book_detail.xml",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\activity_book_detail.xml"
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/fragment_members.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/fragment_members.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-mergeDebugResources-3:\\layout\\fragment_search.xml",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\fragment_search.xml"
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/item_borrowing.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/item_borrowing.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-mergeDebugResources-3:\\layout\\activity_register.xml",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\activity_register.xml"
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/activity_book_detail.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_book_detail.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-mergeDebugResources-3:\\layout\\activity_splash.xml",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\activity_splash.xml"
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/activity_search.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_search.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-mergeDebugResources-3:\\layout\\activity_home.xml",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\activity_home.xml"
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/activity_login.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_login.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-mergeDebugResources-3:\\layout\\fragment_profile.xml",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\fragment_profile.xml"
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/item_review.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/item_review.xml"
     },
     {
-        "merged": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-mergeDebugResources-3:\\layout\\item_admin_book.xml",
-        "source": "C:\\Users\\mrifq\\.gradle\\daemon\\8.2\\com.example.perpustakaan.app-main-6:\\layout\\item_admin_book.xml"
+        "merged": "com.example.perpustakaan.app-mergeDebugResources-3:/layout/activity_home.xml",
+        "source": "com.example.perpustakaan.app-main-6:/layout/activity_home.xml"
     }
 ]
